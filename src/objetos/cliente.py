@@ -30,7 +30,7 @@ class Cliente:
         self.__host = host
         self.__porta = porta
         self.__num_pings = contador
-        self.__mensagem = bytearray('PING-GCC125'.encode())
+        self.__mensagem = bytearray("PING-GCC125".encode())
 
         self.__socket = socket(AF_INET, SOCK_DGRAM)
         self.__socket.settimeout(self.__timeout)

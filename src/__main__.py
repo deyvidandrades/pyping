@@ -4,11 +4,15 @@ from src.objetos.cliente import Cliente
 from src.objetos.servidor import Servidor
 
 
-def main(args):
+def main(arg_parser):
+    args = arg_parser.parse_args()
+
     if args.server:
         Servidor(25050).iniciar()
-    else:
+    elif args.endereco:
         Cliente(args.endereco, args.c, 25050).ping()
+    else:
+        arg_parser.print_help()
 
 
 if __name__ == '__main__':
@@ -19,4 +23,4 @@ if __name__ == '__main__':
     parser.add_argument('-s', '--server', action='store_true', help='inicia em modo servidor.')
     parser.add_argument("-v", "--versao", help="Versao", action="version", version='%(prog)s 1.0')
 
-    main(parser.parse_args())
+    main(parser)
